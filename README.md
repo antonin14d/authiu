@@ -60,5 +60,73 @@ https://site.com/login/?auth_uid={user id}
 ?>
 ```
 
+### 4. Add sing in widget in your app
+This is a custom html element. <authui></authui>
+
+### Full Example (Client authentication)
+
+```bash
+<!doctype html>
+<html lang="en">
+    <head>
+    </head>
+    <body>
+      <authui></authui>
+      
+      //include auth.js
+      <script src="https://authui.com/cloud/1.0/authui.js"></script>
+      <script>
+            authui.initializeApp('...');
+            authui.onAuthStateChanged(function (user) {
+                if (user) {
+                    console.log(user.uid);
+                } else {
+                    console.log('No user session. Show login page');
+                }
+            });
+        </script>
+    </body>
+</html>
+```
+
+### Full Example (Server authentication, php)
+
+```bash
+<?php
+ if(isset($_GET('auth_uid'))) {
+        //active session
+        session_start();
+        
+        $uid = $_GET('auth_uid');
+        $url = 'https://authui.com/api/getUserFromId/'.$uid;
+        
+        //get user info to uid
+        $result = file_get_contents($url);
+        $user_data = json_decode($result)->data;
+        
+        //create session
+        $_SESSION['user'] = $user_data;
+        
+        //reditet to user page
+        header("Location:../");
+    }
+?>
+<!doctype html>
+<html lang="en">
+    <head>
+    </head>
+    <body>
+      <?php if(isset($_SESSION['user'])) { ?>
+            <p><?=$_SESSION['user']['uid']?></p>
+      <?php } else { ?>
+            <authui></authui>
+      <?php } ?>
+      //include auth.js
+      <script src="https://authui.com/cloud/1.0/authui.js"></script>
+      <script>authui.initializeApp('...');</script>
+    </body>
+</html>
+```
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
