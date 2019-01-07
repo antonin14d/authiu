@@ -94,7 +94,7 @@ This is a custom html element.
 ### API
 #### JS
 ```bash
-authui.getUserData
+authui.getUserData()
 ```
 return user object
 ```bash
@@ -106,5 +106,16 @@ user = {
 }
 ```
 
+```bash
+authui.getSessionToken()
+```
+return auth token
+
+#### Server
+To access api, send a get request to https://authui/api/{name method}
+```bash
+getUserFromId/{user id}
+```
+return json object user
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
