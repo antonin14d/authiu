@@ -1,6 +1,6 @@
-# Foobar
+# authui.com
 
-Foobar is a Python library for dealing with word pluralization.
+Simple, free platform sign in
 
 ## Installation
 
