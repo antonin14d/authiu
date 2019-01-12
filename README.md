@@ -112,11 +112,16 @@ authui.getSessionToken()
 return auth token
 
 #### Server
-To access api, send a get request to ```bashhttps://authui.com/api/{name method}```
+To access api, send a get request to ```https://authui.com/api/{name method}```
 ```bash
 getUserFromId/{user id}
 ```
 return json object user
+
+```bash
+getSessionToken/{user id}/{private kay}
+```
+return auth token
 
 #### Render widget
 If you add the widget after loading the structure DOM, so that it is displayed, call the render method below
