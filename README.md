@@ -112,10 +112,17 @@ authui.getSessionToken()
 return auth token
 
 #### Server
-To access api, send a get request to https://authui/api/{name method}
+To access api, send a get request to ```bashhttps://authui.com/api/{name method}```
 ```bash
 getUserFromId/{user id}
 ```
 return json object user
+
+#### Render widget
+If you add the widget after loading the structure DOM, so that it is displayed, call the render method below
+```bash
+<authui></authui>
+<script>authui.renderWidget()</script>
+```
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
